@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Portfolio of Rochana Godigamuwa, Software Engineer and First Class Computer Science graduate.">
+<title>Rochana Godigamuwa · Software Engineer</title>
+<style>
+:root{--bg:#f8fafc;--bg-a:rgba(248,250,252,.85);--surface:#ffffff;--text:#0f172a;--muted:#475569;--line:#e2e8f0;--accent:#4f46e5;--accent2:#0ea5e9;--chip:#eef2ff;--chip-text:#3730a3;--shadow:0 1px 3px rgba(15,23,42,.06),0 8px 24px rgba(15,23,42,.05);box-sizing:border-box;padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1020;--bg-a:rgba(11,16,32,.85);--surface:#131a2e;--text:#f1f5f9;--muted:#94a3b8;--line:#1f2a44;--accent:#818cf8;--accent2:#38bdf8;--chip:#1e2547;--chip-text:#c7d2fe;--shadow:none}}
+:root[data-theme="dark"]{--bg:#0b1020;--bg-a:rgba(11,16,32,.85);--surface:#131a2e;--text:#f1f5f9;--muted:#94a3b8;--line:#1f2a44;--accent:#818cf8;--accent2:#38bdf8;--chip:#1e2547;--chip-text:#c7d2fe;--shadow:none}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);scroll-behavior:smooth;height:auto}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:20;background:var(--bg-a);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:21;background:var(--bg-a);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;height:58px;gap:12px}
+.logo{font-weight:700;letter-spacing:-.01em;color:var(--text)}
+.links{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.links::-webkit-scrollbar{display:none}
+.links a{color:var(--muted);font-size:14px;padding:6px 10px;border-radius:8px;white-space:nowrap}
+.links a:hover{background:var(--chip);color:var(--chip-text);text-decoration:none}
+.hero{position:relative;overflow:hidden;padding:72px 0 64px}
+.hero::before{content:"";position:absolute;width:520px;height:520px;right:-140px;top:-180px;border-radius:50%;background:radial-gradient(circle,var(--accent) 0%,transparent 68%);opacity:.18;pointer-events:none}
+.hero::after{content:"";position:absolute;width:420px;height:420px;left:-160px;bottom:-220px;border-radius:50%;background:radial-gradient(circle,var(--accent2) 0%,transparent 68%);opacity:.14;pointer-events:none}
+.hero .wrap{position:relative;display:flex;gap:40px;align-items:center;flex-wrap:wrap}
+.avatar{width:128px;height:128px;border-radius:50%;display:grid;place-items:center;font-size:44px;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 10px 30px rgba(79,70,229,.3);flex:none}
+.hero-text{flex:1;min-width:260px}
+.pill{display:inline-block;font-size:13px;font-weight:600;color:var(--chip-text);background:var(--chip);padding:4px 12px;border-radius:99px}
+h1{font-size:clamp(36px,7vw,58px);line-height:1.08;letter-spacing:-.03em;margin:14px 0 12px}
+h1 span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:18px;color:var(--muted);max-width:600px;margin:0 0 26px}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-block;padding:11px 20px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--text);font-weight:600;font-size:15px}
+.btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent2));border-color:transparent;color:#fff}
+.btn:hover{text-decoration:none;transform:translateY(-1px)}
+section{padding:60px 0}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+h2{font-size:clamp(26px,4vw,34px);letter-spacing:-.02em;margin:6px 0 28px}
+.about{display:grid;grid-template-columns:1.6fr 1fr;gap:32px}
+.about p{margin:0 0 14px;color:var(--muted);font-size:17px}
+.facts{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow);align-self:start}
+.facts div{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
+.facts div:last-child{border:0}.facts b{color:var(--muted);font-weight:500}.facts span{text-align:right}
+.tl{border-left:2px solid var(--line);margin-left:6px;padding-left:26px}
+.tl-item{position:relative;margin-bottom:30px}
+.tl-item::before{content:"";position:absolute;left:-34px;top:7px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
+.tl-item h3{margin:0;font-size:19px}
+.org{color:var(--accent);font-weight:600;font-size:15px}
+.date{color:var(--muted);font-size:14px;margin:2px 0 8px}
+.tl-item p,.tl-item li{color:var(--muted);margin:0 0 6px;font-size:15.5px}
+.tl-item ul{margin:8px 0 0;padding-left:18px}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow);transition:transform .15s,border-color .15s}
+.card:hover{transform:translateY(-3px);border-color:var(--accent)}
+.card h3{margin:0;font-size:18px}
+.card p{margin:0;color:var(--muted);font-size:15px;flex:1}
+.card .more{font-weight:600;font-size:14px}
+.card.feat{grid-column:1/-1}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{background:var(--chip);color:var(--chip-text);font-size:12.5px;font-weight:500;padding:3px 10px;border-radius:99px}
+.skills{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.skill{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px}
+.skill h3{margin:0 0 10px;font-size:15px;color:var(--muted);font-weight:600}
+.ach{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.ach .card{gap:6px}
+.ico{font-size:26px}
+.contact{text-align:center;background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:48px 22px;box-shadow:var(--shadow)}
+.contact p{color:var(--muted);max-width:480px;margin:0 auto 22px}
+.contact .btns{justify-content:center}
+footer{padding:30px 0 40px;text-align:center;color:var(--muted);font-size:14px}
+@media (max-width:720px){.about{grid-template-columns:1fr}.hero{padding:44px 0}.avatar{width:96px;height:96px;font-size:34px}section{padding:44px 0}}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wrap">
+<a class="logo" href="#top">Rochana G.</a>
+<nav class="links">
+<a href="#about">About</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#achievements">Achievements</a><a href="#contact">Contact</a>
+</nav></div></div>
+
+<header class="hero" id="top"><div class="wrap">
+<div class="avatar" aria-hidden="true">RG</div>
+<div class="hero-text">
+<span class="pill">Open to Software Engineer roles</span>
+<h1>Hi, I’m <span>Rochana Godigamuwa</span></h1>
+<p class="lead">First Class Computer Science graduate building full-stack web and mobile applications, and applying AI to real-world problems. Based in Colombo, Sri Lanka.</p>
+<div class="btns">
+<a class="btn primary" href="#contact">Get in touch</a>
+<a class="btn" href="#projects">View my work</a>
+<a class="btn" href="https://github.com/Rochana-Godigamuwa" target="_blank" rel="noopener">GitHub</a>
+<a class="btn" href="https://www.linkedin.com/in/rochana-godigamuwa-816273280" target="_blank" rel="noopener">LinkedIn</a>
+</div></div></div></header>
+
+<main>
+<section id="about"><div class="wrap">
+<div class="eyebrow">About me</div><h2>A bit about me</h2>
+<div class="about">
+<div>
+<p>I’m a Computer Science graduate from the University of Westminster (IIT) with a First Class honours degree. I enjoy building full-stack web and mobile applications, and I have a strong foundation in object-oriented programming and RESTful API development.</p>
+<p>My final-year project uses deep learning to detect nutrient deficiencies in coconut leaves, with visual explanations that make the results easy for non-technical users to trust.</p>
+<p>Before graduating, I worked as a Trainee Pre-Sales Engineer at VS ONE, where I gained hands-on experience with enterprise IT infrastructure, security tooling and client requirements. I’m now looking for a Software Engineer role in a collaborative, technology-driven team.</p>
+</div>
+<aside class="facts">
+<div><b>Location</b><span>Colombo, Sri Lanka</span></div>
+<div><b>Degree</b><span>BSc (Hons) Computer Science</span></div>
+<div><b>Result</b><span>First Class</span></div>
+<div><b>Focus</b><span>Full-stack, Mobile, AI/ML</span></div>
+<div><b>Looking for</b><span>Software Engineer roles</span></div>
+</aside>
+</div></div></section>
+
+<section id="experience"><div class="wrap">
+<div class="eyebrow">Experience</div><h2>Where I’ve worked</h2>
+<div class="tl">
+<div class="tl-item">
+<h3>Trainee Pre-Sales Engineer</h3><div class="org">VS ONE (Pvt) Ltd</div><div class="date">May 2024 – June 2025</div>
+<ul>
+<li>Administered IT infrastructure and security tooling, including Mobile Device Management and Endpoint Security, for enterprise deployments.</li>
+<li>Ran pre-sales activities such as product demonstrations and requirement gathering for enterprise clients, and maintained the company’s website portals.</li>
+<li>Configured and benchmarked network switches and NAS systems to verify compatibility and performance.</li>
+<li>Designed high-performance workstation solutions for professional workloads.</li>
+<li>Prepared tender documents for enterprise hardware and software solutions.</li>
+</ul></div>
+</div></div></section>
+
+<section id="education"><div class="wrap">
+<div class="eyebrow">Education</div><h2>Where I’ve studied</h2>
+<div class="tl">
+<div class="tl-item">
+<h3>BSc (Honours) in Computer Science · First Class</h3><div class="org">University of Westminster (IIT)</div><div class="date">September 2022 – June 2026</div>
+<p>Thesis: Deep Learning-based Coconut Leaf Deficiency Detection System (ensemble approach with a custom-made model).</p>
+<p>Key modules: Object Oriented Programming, Server-side Web Development, Applied AI, Mobile Application Development, Client-Server Architecture, Usability Testing and Evaluation, Cyber Security, Operational Research Methods.</p>
+<p>Memberships: IEEE Club, IEEE Computer Society.</p></div>
+<div class="tl-item">
+<h3>G.C.E. Advanced Levels · Mathematics Stream</h3><div class="org">St. Mary’s College, Kegalle</div><div class="date">2018 – 2020</div></div>
+<div class="tl-item">
+<h3>G.C.E. Ordinary Levels</h3><div class="org">Royal International School, Kegalle</div><div class="date">2004 – 2017</div></div>
+</div></div></section>
+
+<section id="projects"><div class="wrap">
+<div class="eyebrow">Projects</div><h2>Things I’ve built</h2>
+<div class="grid">
+<article class="card feat"><h3>CocoDef: Coconut Leaf Deficiency Detection</h3>
+<p>My final-year project: a full-stack web app that detects nutrient deficiencies in coconut leaves using MobileNetV2, a custom CNN and transfer learning. It supports real-time image upload, automated classification, fertilizer recommendations, multilingual access and Grad-CAM heatmap explanations for non-technical users. A paper on the work has been submitted to the ICTer conference.</p>
+<div class="tags"><span class="tag">Python</span><span class="tag">TensorFlow</span><span class="tag">Flask</span><span class="tag">React</span><span class="tag">Grad-CAM</span></div>
+<a class="more" href="https://github.com/Rochana-Godigamuwa/CocoDef" target="_blank" rel="noopener">View on GitHub →</a></article>
+
+<article class="card"><h3>PawLink</h3>
+<p>Community platform connecting pet lovers with stray animals. Pet profiles, adoption listings, vet scheduling and community tools.</p>
+<div class="tags"><span class="tag">React Native</span><span class="tag">Firebase</span><span class="tag">Tailwind</span></div>
+<a class="more" href="https://github.com/Rochana-Godigamuwa/PawLink-App" target="_blank" rel="noopener">View on GitHub →</a></article>
+
+<article class="card"><h3>Health System REST API</h3>
+<p>RESTful healthcare management backend with CRUD APIs for patients, doctors, appointments and medical records, in a layered architecture.</p>
+<div class="tags"><span class="tag">Java</span><span class="tag">Jakarta EE</span><span class="tag">JAX-RS</span><span class="tag">Jersey</span><span class="tag">Maven</span></div>
+<a class="more" href="https://github.com/Rochana-Godigamuwa/HealthSystem-Java-RESTAPI" target="_blank" rel="noopener">View on GitHub →</a></article>
+
+<article class="card"><h3>Football Club Browser</h3>
+<p>Native Android app that retrieves live football club and league data from the TheSportsDB REST API, with local Room (SQLite) caching and case-insensitive search.</p>
+<div class="tags"><span class="tag">Kotlin</span><span class="tag">Jetpack Compose</span><span class="tag">Room</span></div>
+<a class="more" href="https://github.com/Rochana-Godigamuwa/Android-Football-Club-Browser" target="_blank" rel="noopener">View on GitHub →</a></article>
+
+<article class="card"><h3>E-Shopping Manager</h3>
+<p>Online shopping system in core Java that applies OOP principles to model products, managers and users, with a Swing GUI for listings and purchases.</p>
+<div class="tags"><span class="tag">Java</span><span class="tag">Swing</span></div>
+<a class="more" href="https://github.com/Rochana-Godigamuwa/E-Commerce-Shopping-Manager" target="_blank" rel="noopener">View on GitHub →</a></article>
+
+<article class="card"><h3>Guess the Country</h3>
+<p>Android flag game with four modes and flag images from 256 countries, featuring real-time colour-coded answer feedback and score tracking.</p>
+<div class="tags"><span class="tag">Kotlin</span><span class="tag">Android Studio</span></div>
+<a class="more" href="https://github.com/Rochana-Godigamuwa/Guessing-Countries-Game-Mobile-App" target="_blank" rel="noopener">View on GitHub →</a></article>
+</div></div></section>
+
+<section id="skills"><div class="wrap">
+<div class="eyebrow">Skills</div><h2>What I work with</h2>
+<div class="skills">
+<div class="skill"><h3>Languages</h3><div class="tags"><span class="tag">Java</span><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">Kotlin</span></div></div>
+<div class="skill"><h3>Frameworks</h3><div class="tags"><span class="tag">React</span><span class="tag">React Native</span><span class="tag">Next.js</span><span class="tag">Flask</span><span class="tag">Node.js</span></div></div>
+<div class="skill"><h3>Databases &amp; backend</h3><div class="tags"><span class="tag">SQL</span><span class="tag">Firebase</span><span class="tag">MongoDB</span><span class="tag">SQLite</span><span class="tag">REST APIs</span></div></div>
+<div class="skill"><h3>AI / Machine learning</h3><div class="tags"><span class="tag">TensorFlow</span><span class="tag">Deep Learning</span><span class="tag">Computer Vision</span><span class="tag">Grad-CAM / XAI</span></div></div>
+<div class="skill"><h3>Security &amp; infrastructure</h3><div class="tags"><span class="tag">Kali Linux</span><span class="tag">OWASP</span><span class="tag">MDM</span><span class="tag">Endpoint Security</span><span class="tag">NAS</span></div></div>
+<div class="skill"><h3>Tools</h3><div class="tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Linux</span><span class="tag">Android Studio</span><span class="tag">VS Code</span><span class="tag">Figma</span></div></div>
+</div></div></section>
+
+<section id="achievements"><div class="wrap">
+<div class="eyebrow">Achievements</div><h2>Highlights &amp; leadership</h2>
+<div class="ach">
+<div class="card"><div class="ico"></div><h3>First Class Honours</h3><p>BSc (Hons) Computer Science, University of Westminster (IIT).</p></div>
+<div class="card"><div class="ico"></div><h3>Research paper submitted</h3><p>Submitted a paper on coconut leaf deficiency detection to the ICTer conference.</p></div>
+<div class="card"><div class="ico"></div><h3>Head Prefect, 2017</h3><p>Led the prefect body at Royal International School, Kegalle.</p></div>
+<div class="card"><div class="ico"></div><h3>School Sports Captain, 2017</h3><p>Also played in the school’s Under-17 cricket and volleyball teams.</p></div>
+<div class="card"><div class="ico"></div><h3>Debating &amp; public speaking</h3><p>Member of the school debating team and school English announcer.</p></div>
+<div class="card"><div class="ico"></div><h3>Clubs &amp; societies</h3><p>IEEE Club, IEEE Computer Society, school Astronomical Society and School Parliament.</p></div>
+</div></div></section>
+
+<section id="contact"><div class="wrap">
+<div class="contact">
+<div class="eyebrow">Contact</div><h2 style="margin-bottom:12px">Let’s work together</h2>
+<p>I’m looking for a Software Engineer role. If you think I could be a fit, I’d love to hear from you.</p>
+<div class="btns">
+<a class="btn primary" href="mailto:rochanagodigamuwa@gmail.com">rochanagodigamuwa@gmail.com</a>
+<a class="btn" href="https://www.linkedin.com/in/rochana-godigamuwa-816273280" target="_blank" rel="noopener">LinkedIn</a>
+<a class="btn" href="https://github.com/Rochana-Godigamuwa" target="_blank" rel="noopener">GitHub</a>
+</div></div></div></section>
+</main>
+
+<footer>© 2026 Rochana Godigamuwa</footer>
+</body>
+</html>
