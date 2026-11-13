@@ -1,42 +1,59 @@
-/* 3D photo ring for the Achievements section */
+/* 3D photo ring (Achievements section).
+   Put photos in the "images" folder named photo-1.jpg, photo-2.jpg, photo-3.jpg ...
+   (jpg, jpeg, png or webp). Numbers must be consecutive. No code changes needed. */
 (() => {
   const stage = document.getElementById('ringStage');
   const ring = document.getElementById('ring');
   if (!stage || !ring) return;
 
-  const settle = (img) => new Promise((res) => {
-    if (img.complete) return res();
-    img.addEventListener('load', res, { once: true });
-    img.addEventListener('error', res, { once: true });
+  const EXTS = ['jpg', 'jpeg', 'png', 'webp'];
+  const MAX = 30;
+
+  const probe = (src) => new Promise((res) => {
+    const im = new Image();
+    im.onload = () => res(im.src);
+    im.onerror = () => res(null);
+    im.src = src;
   });
 
-  Promise.all([...ring.querySelectorAll('img')].map(settle)).then(init);
+  async function discover() {
+    const found = [];
+    for (let i = 1; i <= MAX; i++) {
+      let url = null;
+      for (const ext of EXTS) {
+        url = await probe('images/photo-' + i + '.' + ext);
+        if (url) break;
+      }
+      if (!url) break;
+      found.push(url);
+    }
+    return found;
+  }
 
-  function init() {
-    // drop any photo that failed to load, then work with what is left
-    ring.querySelectorAll('figure').forEach((f) => {
-      if (!f.querySelector('img').naturalWidth) f.remove();
+  discover().then((urls) => {
+    if (!urls.length) return; // nothing found: the block stays hidden
+    urls.forEach((u, i) => {
+      const f = document.createElement('figure');
+      f.className = 'slot';
+      f.innerHTML = '<div class="shot"><div class="frame"><img draggable="false"></div><i class="hud"></i></div>';
+      const img = f.querySelector('img');
+      img.src = u;
+      img.alt = 'Photo ' + (i + 1);
+      ring.appendChild(f);
     });
+    init(urls);
+  });
+
+  function init(urls) {
     const cards = [...ring.querySelectorAll('figure')];
     const n = cards.length;
-    if (!n) return; // CSS hides the whole block when there are no photos
-
     const pad = (v) => String(v).padStart(2, '0');
     document.getElementById('ringCount').textContent = pad(n);
 
-    const items = cards.map((c, i) => {
-      const cap = c.querySelector('figcaption');
-      const text = cap.textContent.trim();
-      cap.textContent = '';
-      const b = document.createElement('b');
-      b.textContent = pad(i + 1);
-      const s = document.createElement('span');
-      s.textContent = text;
-      cap.append(b, s);
+    cards.forEach((c, i) => {
       c.tabIndex = 0;
       c.setAttribute('role', 'button');
-      c.setAttribute('aria-label', 'Open photo: ' + text);
-      return { src: c.querySelector('img').src, text, idx: pad(i + 1) };
+      c.setAttribute('aria-label', 'Open photo ' + (i + 1) + ' of ' + n);
     });
 
     /* ---------- Lightbox ---------- */
@@ -58,14 +75,9 @@
 
     const show = (i) => {
       current = (i + n) % n;
-      lbImg.src = items[current].src;
-      lbImg.alt = items[current].text;
-      lbCap.textContent = '';
-      const b = document.createElement('b');
-      b.textContent = items[current].idx;
-      const s = document.createElement('span');
-      s.textContent = ' ' + items[current].text;
-      lbCap.append(b, s);
+      lbImg.src = urls[current];
+      lbImg.alt = 'Photo ' + (current + 1);
+      lbCap.textContent = pad(current + 1) + ' / ' + pad(n);
     };
     const open = (i, from) => {
       opener = from || null;
@@ -80,8 +92,7 @@
       if (opener) opener.focus({ preventScroll: true });
     };
     lb.addEventListener('click', (e) => {
-      if (e.target === lb) close();
-      else if (e.target.closest('.lb-close')) close();
+      if (e.target === lb || e.target.closest('.lb-close')) close();
       else if (e.target.closest('.prev')) show(current - 1);
       else if (e.target.closest('.next')) show(current + 1);
     });
@@ -108,7 +119,7 @@
     const step = (2 * Math.PI) / Math.max(n, 6); // keeps spacing nice with few photos
     let angle = 0, vel = 0;
     let hovering = false, dragging = false, visible = true;
-    let startX = 0, lastX = 0, lastT = 0, moved = 0;
+    let lastX = 0, lastT = 0, moved = 0;
     const AUTO = 0.28; // radians per second
 
     function render() {
@@ -150,7 +161,7 @@
 
     stage.addEventListener('pointerdown', (e) => {
       dragging = true; moved = 0; vel = 0;
-      startX = lastX = e.clientX; lastT = e.timeStamp;
+      lastX = e.clientX; lastT = e.timeStamp;
       stage.setPointerCapture(e.pointerId);
     });
     stage.addEventListener('pointermove', (e) => {
