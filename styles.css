@@ -133,29 +133,69 @@ nav a:hover {
 }
 .live {
   display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  align-items: stretch;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  background: var(--card);
+  overflow: hidden;
   font-size: 13px;
   font-weight: 600;
-  color: #15803d;
-  background: rgba(34, 197, 94, 0.14);
-  padding: 4px 12px;
-  border-radius: 99px;
+  transition: border-color 0.25s, box-shadow 0.25s;
 }
 .live:hover {
   text-decoration: none;
-  background: rgba(34, 197, 94, 0.22);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12), 0 6px 20px rgba(37, 99, 235, 0.15);
 }
-.live i {
+.live-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 13px 7px 15px;
+  color: #15803d;
+  background: rgba(34, 197, 94, 0.14);
+  border-right: 1px solid var(--line);
+}
+.live-status i {
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: #22c55e;
   animation: pulse 1.8s infinite;
 }
+.live-src {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 15px 7px 12px;
+  color: var(--muted);
+  transition: color 0.25s;
+}
+.live:hover .live-src {
+  color: var(--accent);
+}
+.live-src svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.live-arrow {
+  display: inline-block;
+  transition: transform 0.25s;
+}
+.live:hover .live-arrow {
+  transform: translate(2px, -2px);
+}
 @media (prefers-color-scheme: dark) {
-  .live {
+  .live-status {
     color: #4ade80;
+  }
+  .live:hover {
+    box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.15), 0 6px 20px rgba(96, 165, 250, 0.18);
   }
 }
 .hi {
