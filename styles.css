@@ -564,44 +564,25 @@ footer {
   }
 }
 
-/* ===== Photo archive: 3D ring ===== */
-.ring-stage{position:relative;height:340px;overflow:hidden;border:1px solid var(--line);border-radius:16px;background:var(--card);touch-action:pan-y;cursor:grab;--cw:260px}
-.ring-stage:active{cursor:grabbing}
-.ring-stage::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:34px 34px;opacity:.55;-webkit-mask-image:radial-gradient(ellipse at center,#000 15%,transparent 75%);mask-image:radial-gradient(ellipse at center,#000 15%,transparent 75%)}
-.ring-stage::after{content:"";position:absolute;left:12%;right:12%;bottom:18px;height:36px;pointer-events:none;border-radius:50%;background:radial-gradient(ellipse at center,var(--accent),transparent 70%);opacity:.18;filter:blur(8px)}
-.ring{position:relative;z-index:1;height:100%;display:grid;place-items:center;perspective:1100px}
-.slot{grid-area:1/1;width:var(--cw);margin:0;cursor:pointer;user-select:none;-webkit-user-select:none;will-change:transform,opacity;outline:none}
-.shot{position:relative}
-.frame{position:relative;overflow:hidden;border-radius:8px;background:var(--bg)}
-.frame img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;pointer-events:none}
-.frame::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.05) 0 1px,transparent 1px 3px)}
-.frame::before{content:"";position:absolute;left:0;right:0;top:-6px;height:2px;z-index:1;opacity:0;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
-.slot:hover .frame::before,.slot:focus-visible .frame::before{opacity:1;animation:scan 1.4s linear infinite}
-@keyframes scan{from{top:-6px}to{top:100%}}
-.hud{position:absolute;inset:-6px;pointer-events:none;transition:inset .25s;background:
-linear-gradient(var(--accent),var(--accent)) 0 0/18px 2px no-repeat,linear-gradient(var(--accent),var(--accent)) 0 0/2px 18px no-repeat,
-linear-gradient(var(--accent),var(--accent)) 100% 0/18px 2px no-repeat,linear-gradient(var(--accent),var(--accent)) 100% 0/2px 18px no-repeat,
-linear-gradient(var(--accent),var(--accent)) 0 100%/18px 2px no-repeat,linear-gradient(var(--accent),var(--accent)) 0 100%/2px 18px no-repeat,
-linear-gradient(var(--accent),var(--accent)) 100% 100%/18px 2px no-repeat,linear-gradient(var(--accent),var(--accent)) 100% 100%/2px 18px no-repeat}
-.slot:hover .hud,.slot:focus-visible .hud{inset:-9px}
-.ring-stage.is-grid{height:auto;cursor:default}
-.ring-stage.is-grid .ring{display:grid;height:auto;perspective:none;padding:26px;gap:26px;grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
-.ring-stage.is-grid .slot{grid-area:auto;width:auto}
-@media (max-width:640px){.ring-stage{height:280px;--cw:170px}}
+/* ===== Photo gallery ===== */
+#proof{margin-top:40px}
+.gallery{--h:220px;display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+.g-item{--r:1.5;height:var(--h);aspect-ratio:var(--r);flex:none;max-width:100%;margin:0;overflow:hidden;border-radius:14px;cursor:zoom-in;outline:none;box-shadow:0 6px 22px rgba(0,0,0,.22);opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease,box-shadow .3s}
+.g-item.in{opacity:1;transform:none}
+.g-item:hover,.g-item:focus-visible{box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.g-item:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.g-item img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.g-item:hover img,.g-item:focus-visible img{transform:scale(1.05)}
+@media (prefers-reduced-motion:reduce){.g-item{opacity:1;transform:none;transition:none}.g-item img{transition:none}}
+@media (max-width:640px){.gallery{--h:170px;gap:10px}}
 
 /* Lightbox */
-.lb{position:fixed;inset:0;z-index:50;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:10px;padding:calc(env(safe-area-inset-top,0px) + 56px) 14px calc(env(safe-area-inset-bottom,0px) + 24px);background:rgba(5,10,20,.9);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.lb{position:fixed;inset:0;z-index:50;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:10px;padding:calc(env(safe-area-inset-top,0px) + 56px) 14px calc(env(safe-area-inset-bottom,0px) + 24px);background:rgba(5,10,20,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .lb[hidden]{display:none}
 .lb-fig{margin:0;text-align:center;min-width:0}
-.lb-fig img{max-width:100%;max-height:72vh;border-radius:10px;border:1px solid var(--accent);box-shadow:0 0 0 5px rgba(96,165,250,.12),0 20px 60px rgba(0,0,0,.5)}
-.lb-fig figcaption{margin-top:16px;font:500 13px/1.3 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.06em;text-transform:uppercase;color:#cbd5e1}
-.lb-fig figcaption b{color:#60a5fa;font-weight:600}
-.lb-fig figcaption b::after{content:" //"}
+.lb-fig img{max-width:100%;max-height:82vh;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
 .lb button{width:44px;height:44px;border-radius:12px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#f9fafb;font-size:22px;line-height:1;cursor:pointer;transition:background .2s,border-color .2s}
 .lb button:hover{background:rgba(96,165,250,.22);border-color:#60a5fa}
 .lb-close{position:absolute;top:calc(env(safe-area-inset-top,0px) + 12px);right:14px}
+.lb.single .lb-nav{visibility:hidden}
 @media (max-width:640px){.lb{grid-template-columns:minmax(0,1fr);grid-template-rows:1fr auto}.lb-fig{grid-row:1;grid-column:1}.lb-nav{position:absolute;bottom:calc(env(safe-area-inset-bottom,0px) + 14px)}.lb-nav.prev{left:14px}.lb-nav.next{right:14px}}
-
-#proof{margin-top:40px}
-.ring-hint{position:absolute;z-index:2;top:14px;left:16px;display:flex;align-items:center;gap:8px;pointer-events:none;font:500 11px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.08em;color:var(--muted)}
-.ring-hint i{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 1.8s infinite}
